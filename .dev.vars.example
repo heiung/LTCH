@@ -1,0 +1,24 @@
+# Biến môi trường cục bộ cho Cloudflare Pages (`wrangler pages dev`).
+# Sao chép thành `.dev.vars` khi chạy thử API tại máy; không bao giờ commit `.dev.vars`.
+
+ALLOWED_ORIGIN=https://ltch.example.com
+API_ORIGIN=https://api.ltch.example.com
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SECRET=sb_secret_replace_with_real_secret
+FIREBASE_PROJECT_ID=your-firebase-project
+FIREBASE_API_KEY=replace_with_firebase_web_api_key
+MAIL_ENDPOINT=https://script.google.com/macros/s/REPLACE_WITH_DEPLOYMENT_ID/exec
+MAIL_SECRET=replace_with_random_hex_secret_at_least_32_chars
+ADMIN_EMAIL=admin@example.com
+DRIVE_OWNER_EMAIL=admin@example.com
+
+# Google Drive OAuth (tùy chọn cho môi trường phát triển cục bộ)
+GOOGLE_DRIVE_CLIENT_ID=
+GOOGLE_DRIVE_CLIENT_SECRET=
+GOOGLE_DRIVE_REFRESH_TOKEN=
+
+# Cờ tính năng tùy chọn ('1' bật / '0' tắt; LTCH_LESSONS_AUDIENCE: 'all' hoặc 'pilot')
+LTCH_LESSONS_ENABLED=1
+LTCH_LESSONS_AUDIENCE=all
+LTCH_LESSONS_PILOT_UIDS=
+LTCH_DRIVE_LINK_PREVIEW=0

@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify repository hygiene
+        run: |
+          if git ls-files | grep -E '(^\.env$|^\.env\..+|^\.dev\.vars$|^\.dev\.vars\..+|^\.deploy/|^\.local/|^public/app\.js$|^public/mathlive/|^public/pdfjs/)' | grep -vE '^(\.env\.example|\.dev\.vars\.example)$'; then
+            echo "Found forbidden secret or generated file tracked in git."
+            exit 1
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build frontend and API worker
+        run: npm run build
+
+      - name: Run automated test suite
+        run: node --test tests/*.test.cjs tests/*.test.mjs

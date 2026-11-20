@@ -1,0 +1,8 @@
+const test=require('node:test');const assert=require('node:assert/strict');const {createSubmissionService}=require('../server/domain/submissions.cjs');
+function fixture(){let uploadOk=true,markOk=true;const records=new Map();let uploadCalls=0;
+ const repository={getAssignment:async()=>({status:'published',opensAt:1,closesAt:200,classId:'class'}),reserve:async record=>{records.set(record.id,record);return true;},markStored:async id=>{if(!markOk)throw Error('db offline');records.get(id).status='stored';},markFailed:async id=>{records.get(id).status='failed';}};
+ const svc=createSubmissionService({repository,storage:{upload:async()=>{uploadCalls++;if(!uploadOk)throw Error('offline');return {size:5}}},authorize:async actor=>actor.uid==='student',clock:()=>100,makeId:()=> 'test-id'});
+ return {svc,records,getCalls:()=>uploadCalls,failUpload:()=>uploadOk=false,failMark:()=>markOk=false};}
+const params={actor:{uid:'student'},assignmentId:'a1',bytes:new Uint8Array([1]),contentType:'application/pdf'};
+test('submission authorizes before upload and confirms only after saving',async()=>{const f=fixture();await assert.rejects(f.svc.submit({...params,actor:{uid:'other'}}));assert.equal(f.getCalls(),0);assert.equal((await f.svc.submit(params)).status,'submitted');assert.equal(f.records.get('test-id').status,'stored');});
+test('storage failure and database failure do not return successful submission',async()=>{const a=fixture();a.failUpload();await assert.rejects(a.svc.submit(params),/Upload failed/);assert.equal(a.records.get('test-id').status,'failed');const b=fixture();b.failMark();await assert.rejects(b.svc.submit(params),/db offline/);assert.equal(b.records.get('test-id').status,'pending');});

@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "express": "^5.3.0",
+    "firebase": "^13.1.0",
+    "firebase-admin": "^14.5.0",
+    "firebase-functions": "^7.4.0",
+    "helmet": "^8.3.0",
+    "jose": "^6.2.14",
+    "katex": "0.19.1",
+    "mathlive": "^0.111.4",
+    "pdfjs-dist": "6.5.438"
+  },
+  "name": "ltch",
+  "private": true,
+  "main": "index.cjs",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "pretest": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.cjs tests/*.test.mjs",
+    "preqa:roles": "node scripts/build.mjs",
+    "qa:roles": "node tests/ui/role-audit.mjs",
+    "sync:otp-template": "node scripts/sync-apps-script-otp.cjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.15",
+    "esbuild": "^0.28.2",
+    "playwright": "1.65.0",
+    "pngjs": "7.0.0"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "1.14.7"
+  }
+}

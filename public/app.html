@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="only light">
+  <meta name="darkreader-lock">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#013f93">
+  <title>Lớp Toán cô Hạnh · Cổng Học Tập Số</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=20261119_brand_v2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=20261119_brand_v2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261119_brand_v2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css?v=1d719c9a7f">
+  <link rel="stylesheet" href="/scrollbars.css?v=20261119_light_v1">
+</head>
+<body>
+  <a class="skip" href="#main">Đến nội dung chính</a>
+
+  <header class="top">
+    <button class="workspace-menu-toggle" id="workspace-menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="workspace-sidebar">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <a class="brand" href="/" aria-label="Lớp Toán cô Hạnh · Trang chủ">
+      <div class="brand-logo-wrap">
+        <img src="/logo.png?v=20261119_brand_v2" width="44" height="44" alt="Logo Lớp Toán cô Hạnh">
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">Lớp Toán cô Hạnh</span>
+        <span class="brand-subtitle">Hiểu bản chất - Vững tư duy</span>
+      </div>
+    </a>
+    
+    <div class="header-right">
+      <button id="header-account-btn" class="header-account-btn" hidden type="button" aria-label="Tài khoản cá nhân" title="Tài khoản cá nhân">
+        <span id="header-account-initials" aria-hidden="true"></span>
+      </button>
+      <button id="logout" hidden type="button" aria-label="Đăng xuất" title="Đăng xuất">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Đăng xuất</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="status" role="status" aria-live="polite"></div>
+
+  <main id="main">
+    <div class="auth-wrapper">
+      <div class="auth-container">
+        <!-- Cột Giới thiệu Trực quan / Nhận diện Học viện Toán -->
+        <aside class="auth-showcase" id="auth-showcase">
+          <div class="showcase-content">
+            <div class="showcase-top">
+              <div class="showcase-badge">
+                <span class="showcase-badge-dot"></span>
+                <span>Lớp Toán cô Hạnh · Khối 6 – 12</span>
+              </div>
+              
+              <h2 class="showcase-quote">
+                Không gian học tập &amp; theo dõi tiến độ môn Toán
+              </h2>
+              
+              <p class="showcase-desc">
+                Kết nối đồng bộ bài giảng trên lớp, phiếu bài tập định kỳ, phòng luyện đề trực tuyến và sổ theo dõi chuyên cần sau mỗi buổi học.
+              </p>
+
+              <div class="showcase-features">
+                <div class="showcase-feature-item">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  </div>
+                  <div class="feature-body">
+                    <strong>Bài giảng &amp; Phiếu bài tập theo buổi</strong>
+                    <p>Hệ thống hóa lý thuyết từ gốc định lý và tài liệu tự luyện gắn với từng buổi học.</p>
+                  </div>
+                </div>
+
+                <div class="showcase-feature-item">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  </div>
+                  <div class="feature-body">
+                    <strong>Phòng luyện đề &amp; Đánh giá năng lực</strong>
+                    <p>Thi thử trực tuyến chuẩn cấu trúc kèm lời giải chi tiết và thống kê kết quả.</p>
+                  </div>
+                </div>
+
+                <div class="showcase-feature-item">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div class="feature-body">
+                    <strong>Đồng hành sát sao cùng phụ huynh</strong>
+                    <p>Cập nhật minh bạch lịch học, điểm danh chuyên cần và tiến độ hoàn thành bài tập.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Cột Thẻ Đăng nhập & Xác thực -->
+        <div class="auth-card-wrapper">
+          <!-- Bảng Đăng nhập -->
+          <section id="login" class="login-panel">
+            <div class="auth-header">
+              <div class="auth-logo-badge">
+                <img src="/logo.png?v=20261119_brand_v2" width="52" height="52" alt="Logo Lớp Toán cô Hạnh">
+              </div>
+              <span class="auth-badge">Cổng Học Tập Số</span>
+              <h1>Đăng nhập lớp học</h1>
+              <p class="muted">Dành cho Học sinh, Phụ huynh và Giáo viên</p>
+            </div>
+
+            <button id="google" class="google-btn wide" type="button">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+              <span>Tiếp tục bằng tài khoản Google</span>
+            </button>
+
+            <div class="separator"><span>hoặc tiếp tục bằng email</span></div>
+
+            <form id="email-form">
+              <label>
+                <span>Địa chỉ email</span>
+                <input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="hocsinh@example.com">
+              </label>
+              <label>
+                <span>Mật khẩu</span>
+                <input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" placeholder="••••••••">
+              </label>
+              <label id="confirm-label" hidden>
+                <span>Xác nhận mật khẩu</span>
+                <input name="confirm" type="password" autocomplete="new-password" minlength="8" maxlength="128" placeholder="••••••••">
+              </label>
+              <label id="register-consent-label" class="consent-check" hidden>
+                <input name="consent" type="checkbox">
+                <span>Tôi đã đọc và đồng ý với <a href="/chinh-sach-bao-mat.html" target="_blank" rel="noopener">Chính sách bảo vệ dữ liệu cá nhân</a> của Lớp Toán cô Hạnh (đối với học sinh dưới 16 tuổi, việc đăng ký đã có sự đồng ý của cha mẹ hoặc người giám hộ).</span>
+              </label>
+              <button id="email-submit" class="primary wide" type="submit">Đăng nhập</button>
+            </form>
+
+            <div class="auth-footer-actions">
+              <button id="toggle-register" class="text-button" type="button">Chưa có tài khoản? Đăng ký mới</button>
+              <button id="reset-password" class="text-button" type="button">Quên mật khẩu?</button>
+            </div>
+
+          </section>
+
+          <!-- Bảng Nhập OTP Xác Minh -->
+          <section id="otp-panel" class="login-panel" hidden>
+            <div class="auth-header">
+              <div class="auth-security-icon">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span class="auth-badge">Bảo Mật Hai Lớp (2FA)</span>
+              <h1>Xác minh danh tính</h1>
+              <div class="otp-target-card">
+                <span id="otp-description"></span>
+              </div>
+            </div>
+
+            <form id="otp-form">
+              <label>
+                <span id="otp-code-label" class="field-label">Nhập mã gồm 6 chữ số</span>
+                <div class="otp-digit-grid"><input class="otp-digit-box" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" maxlength="6" placeholder="0" aria-label="Chữ số thứ 1" data-otp-index="0"><input class="otp-digit-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" placeholder="0" aria-label="Chữ số thứ 2" data-otp-index="1"><input class="otp-digit-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" placeholder="0" aria-label="Chữ số thứ 3" data-otp-index="2"><input class="otp-digit-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" placeholder="0" aria-label="Chữ số thứ 4" data-otp-index="3"><input class="otp-digit-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" placeholder="0" aria-label="Chữ số thứ 5" data-otp-index="4"><input class="otp-digit-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" placeholder="0" aria-label="Chữ số thứ 6" data-otp-index="5"></div><input name="code" type="text" class="otp-hidden-code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" tabindex="-1" aria-hidden="true" required>
+              </label>
+              <button class="primary wide" type="submit">Xác nhận và vào lớp</button>
+            </form>
+
+            <div class="auth-footer-actions">
+              <button id="resend" class="text-button" type="button">Gửi lại mã xác minh</button>
+              <button id="cancel-auth" class="text-button" type="button">← Đổi sang tài khoản khác</button>
+            </div>
+          </section>
+
+          <!-- Biểu mẫu hoàn thiện hồ sơ & chọn lớp (Tài khoản mới hoặc Cần sửa) -->
+          <section id="onboarding-panel" class="onboarding-panel" hidden></section>
+
+          <!-- Màn hình trạng thái Chờ Quản trị viên phê duyệt -->
+          <section id="pending-panel" class="pending-card" hidden></section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Không gian học tập Workspace -->
+    <section id="workspace" hidden>
+      <div class="app-frame">
+        <div id="workspace-menu-backdrop" class="workspace-menu-backdrop" aria-hidden="true"></div>
+        <aside class="workspace-sidebar" id="workspace-sidebar">
+          <div class="workspace-drawer-heading">
+            <div><strong id="workspace-drawer-title">Lớp Toán cô Hạnh</strong><span>Không gian học tập</span></div>
+            <button id="workspace-menu-close" type="button" aria-label="Đóng menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+          </div>
+          <div id="workspace-menu-panel">
+          <nav id="navigation" aria-label="Chức năng chính"></nav>
+          <button type="button" class="user-badge" id="user-badge-container" hidden aria-label="Cài đặt tài khoản cá nhân" title="Cài đặt tài khoản cá nhân">
+            <span id="account-label"></span>
+          </button>
+          </div>
+        </aside>
+
+        <div id="content" class="content" tabindex="-1"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Đóng hộp thoại">×</button>
+    </form>
+    <div id="editor-content"></div>
+  </dialog>
+
+  <script type="module" src="/app.js?v=24c32213d4"></script>
+</body>
+</html>

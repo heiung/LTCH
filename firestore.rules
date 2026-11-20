@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // All records are server-only until verified identity, OTP session and
+    // per-resource authorization have been connected and reviewed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

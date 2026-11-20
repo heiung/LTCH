@@ -1,0 +1,31 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const vm = require('node:vm');
+const fs = require('node:fs');
+const crypto = require('node:crypto');
+const { renderOtpEmail } = require('../server/domain/notification-templates.cjs');
+const source = ['Code.gs', 'OtpTemplate.gs'].map(file => fs.readFileSync(`integrations/apps-script-otp/${file}`, 'utf8')).join('\n');
+
+test('mail handler verifies signatures and refuses a replay', () => {
+  const values = { LTCH_MAIL_SECRET: 'x'.repeat(32) };
+  const sent = [];
+  const props = { getProperty: k => values[k], setProperty: (k, v) => { values[k] = v; }, getProperties: () => ({ ...values }), deleteProperty: k => { delete values[k]; } };
+  const context = { PropertiesService: { getScriptProperties: () => props }, LockService: { getScriptLock: () => ({ tryLock: () => true, releaseLock: () => {} }) }, Utilities: { Charset: { UTF_8: 'utf8' }, computeHmacSha256Signature: (m, s, encoding) => [...crypto.createHmac('sha256', s).update(m, encoding).digest()] }, MailApp: { sendEmail: x => sent.push(x) }, ContentService: { MimeType: { JSON: 'json' }, createTextOutput: x => ({ setMimeType: () => x }) }, Date, JSON, Number, Object };
+  vm.createContext(context);
+  vm.runInContext(source, context);
+  const data = { email: 'student@example.com', code: '012345', timestamp: Date.now(), nonce: 'a'.repeat(32) };
+  data.signature = crypto.createHmac('sha256', values.LTCH_MAIL_SECRET).update([data.timestamp, data.nonce, data.email, data.code].join('\n')).digest('hex');
+  const call = p => JSON.parse(context.doPost({ postData: { contents: JSON.stringify(p) } }));
+  assert.equal(call({ ...data, signature: '0'.repeat(64) }).ok, false);
+  assert.equal(call(data).ok, true);
+  assert.equal(call(data).ok, false);
+  assert.equal(sent.length, 1);
+  assert.equal(sent[0].name, 'Lớp Toán cô Hạnh');
+  const expected = renderOtpEmail(data.code);
+  assert.equal(sent[0].subject, expected.subject);
+  assert.equal(sent[0].body, expected.body);
+  assert.equal(sent[0].htmlBody, expected.htmlBody);
+  assert.doesNotMatch(sent[0].subject, /012345/);
+  assert.match(sent[0].htmlBody, /012345/);
+  assert.match(sent[0].htmlBody, /<!DOCTYPE html>/i);
+});
